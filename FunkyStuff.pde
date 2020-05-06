@@ -1,21 +1,24 @@
 
-color[] fColors = {#4287f5, #f54266, #f5e942, #f5ce42, #40ecf5};
+color[] fColors = {#4287f5, #f54266, #f5e942, #32a846, #40ecf5};
 int fCount = 0;
 
 
 void setup() {
   size(800, 800);
-  background(255);
+  background(0);
   noStroke();
 
 
-  Drawer d = new Drawer(1, 0, -3.0);
-  Axes ax = new Axes();    
+  Function f = new Function(2.0, 0.0, 1.0/8); // 2 - 0*x + 1/8x^2
+  
+  Axes ax = new Axes();
 
-  println(d.compute(10));
-  d.render(0, 800);
-
+  
   ax.render();
+  ax.xPos(0);
+  f.fDraw(ax);
+  
+  save("img" + str(int(random(10000))) + ".png");
 }
 
 void draw() {

@@ -1,31 +1,56 @@
 class Axes {
-  float xPos = width/2;
-  float yPos = height/2;
-  int markCount = 20;
-  color coorColor = #000000;
-
+  float xPos = 100;
+  float yPos = 700; //origo of coordinate system
+  int markCount = 50;
+  color coorColor = #ffffff;
+  float xScalar;
+  float yScalar;
+  color chLineColor = #696969;
   Axes() {
+    xScalar = size[0]/markCount;
+    yScalar = size[1]/markCount;
   }
 
   void render() {
-    //xAxis
-    stroke(coorColor);
-    line(xPos, height, xPos, 0);
-    for (int y = int(yPos); y < width; y += width/20) {
-      line(xPos - 5, y, xPos, y);
-    }
-    for (int y = int(yPos); y > 0; y -= width/20) {
+    //yAxis
+    for (float y = yPos; y < height; y += yScalar) {
+      stroke(chLineColor);
+      line(0, y, width, y);
+      stroke(coorColor);
       line(xPos - 5, y, xPos, y);
     }
 
-    //yAxis
-    stroke(coorColor);
-    line(0, yPos, width, yPos);
-    for (int x = int(xPos); x < width; x += width/20) {
-      line(x, yPos + 5, x, yPos);
+    for (float y = yPos; y > 0; y -= yScalar) {
+      stroke(chLineColor);
+      line(0, y, width, y);
+      stroke(coorColor);
+      line(xPos - 5, y, xPos, y);
     }
-    for (int x = int(xPos); x > 0; x -= width/20) {
-      line(x, yPos + 5, x, yPos);
+
+    //xAxis
+    for (float x = xPos; x < width; x += xScalar) {
+      stroke(chLineColor);
+      line(x, 0, x, height);
+      stroke(coorColor);
+      line(x, yPos - 5, x, yPos);
     }
+
+    for (float x = xPos; x > 0; x -= xScalar) {
+      stroke(chLineColor);
+      line(x, 0, x, height);
+      stroke(coorColor);
+      line(x, yPos - 5, x, yPos);
+    }
+    stroke(255);
+    line(xPos, 0, xPos, height); // horizontal line
+    line(0, yPos, width, yPos); // vertical line
+    
+  }
+  float xPos(float xIn) {
+    return xIn + this.xPos;
+  }
+
+  float yPos(float yIn) {
+    return (this.yPos) - yIn ;
   }
 }

@@ -19,6 +19,9 @@ void setup() {
   f.fDraw(ax);
   
   println(f.compute(100));
+  
+}
+void onClick(){
   save("img" + str(int(random(1000))) + ".png");
 }
 

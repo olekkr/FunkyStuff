@@ -1,6 +1,6 @@
 class Axes {
   float xPos = 400;
-  float yPos = 800; //origo of coordinate system
+  float yPos = 600; //origo of coordinate system
   int markCount = 50;
   color coorColor = #ffffff;
   float xScalar;
@@ -18,6 +18,7 @@ class Axes {
       line(0, y, width, y);
       stroke(coorColor);
       line(xPos - 5, y, xPos, y);
+      text(y/yScalar, xPos-10, y);
     }
 
     for (float y = yPos; y > 0; y -= yScalar) {

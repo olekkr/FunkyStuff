@@ -29,6 +29,7 @@ class Function {
 
 
   float compute(float x) {
+    
     float result = 0;
     for (int i = 0; i < m_polys.length; i++) {
       if (m_polys[i] == 0) {
@@ -40,10 +41,11 @@ class Function {
   }
 
   void fDraw(Axes ax) {
+    
     noStroke();
     fill(m_color);
-    for (float x = -400; x < ax.size[0]; x += 0.01) {
-      circle(ax.xPos(x*ax.xScalar), ax.yPos(compute(x*ax.yScalar)), 2.5);
+    for (float x = -400; x < width; x += 0.01) {
+      circle(ax.xPos(x), ax.yPos(compute(x)), 2.5);
       
     }
     

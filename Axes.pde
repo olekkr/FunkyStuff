@@ -1,14 +1,14 @@
 class Axes {
-  float xPos = 100;
-  float yPos = 700; //origo of coordinate system
+  float xPos = 400;
+  float yPos = 800; //origo of coordinate system
   int markCount = 50;
   color coorColor = #ffffff;
   float xScalar;
   float yScalar;
   color chLineColor = #696969;
   Axes() {
-    xScalar = size[0]/markCount;
-    yScalar = size[1]/markCount;
+    xScalar = width/markCount;
+    yScalar = height/markCount;
   }
 
   void render() {
@@ -41,16 +41,17 @@ class Axes {
       stroke(coorColor);
       line(x, yPos - 5, x, yPos);
     }
+    
     stroke(255);
     line(xPos, 0, xPos, height); // horizontal line
     line(0, yPos, width, yPos); // vertical line
     
   }
   float xPos(float xIn) {
-    return xIn + this.xPos;
+    return (xIn * xScalar + this.xPos) ;
   }
 
   float yPos(float yIn) {
-    return (this.yPos) - yIn ;
+    return (this.yPos - yIn * yScalar)  ;
   }
 }

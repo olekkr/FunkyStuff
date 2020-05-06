@@ -12,13 +12,14 @@ void setup() {
   Function f = new Function(2.0, 0.0, 1.0/8); // 2 - 0*x + 1/8x^2
   
   Axes ax = new Axes();
-
+  
   
   ax.render();
   ax.xPos(0);
   f.fDraw(ax);
   
-  save("img" + str(int(random(10000))) + ".png");
+  println(f.compute(100));
+  save("img" + str(int(random(1000))) + ".png");
 }
 
 void draw() {

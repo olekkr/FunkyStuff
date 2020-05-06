@@ -18,10 +18,8 @@ void setup() {
   ax.xPos(0);
   f.fDraw(ax);
   
-  println(f.compute(100));
-  
 }
-void onClick(){
+void mousePressed(){
   save("img" + str(int(random(1000))) + ".png");
 }
 

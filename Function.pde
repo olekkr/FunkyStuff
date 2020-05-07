@@ -91,13 +91,10 @@ class Function {
       return 0;
     }
     float sum = 0;
-
     float hopLen = abs(b-a)/simpCount;
     for (int i = 0; i <= simpCount; ++i) {
       sum += (3 * log(compute(i*hopLen))-1 + 4 * (3 * log(compute(i*hopLen + hopLen * (3.0/1.0)))-1 ) + (3 * log(compute(i*hopLen + hopLen * (3.0/2.0)) )-1));
     } 
-
-
     return sum/6;
   }
 }

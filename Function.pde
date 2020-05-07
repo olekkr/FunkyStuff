@@ -50,14 +50,8 @@ class Function {
         }
         result += pow(x, i) * m_polys[i];
       }
-    } else {
-      for (;;) {
-        if (m_polys[i] == 0) {
-          continue;
-        }
-        result += pow(x, i) * m_polys[i];
-      }
     }
+
 
 
     return result;

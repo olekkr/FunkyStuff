@@ -4,11 +4,16 @@ class SegFunc {
   FloatList limits = new FloatList();
 
 
-  SegFunc(){};
+  SegFunc(){
+  
+  
+  
+  }
 
-  int addLtdFunc(Function func, float[] limits) {
+  int addLtdFunc(Function func, float a, float b) {
     this.funcs.add(func);
-    this.limits.append(limits[0]);
+    this.limits.append(a);
+    this.limits.append(b);
 
     return 0;
   }

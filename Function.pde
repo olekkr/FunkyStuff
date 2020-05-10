@@ -61,14 +61,14 @@ class Function {
     float delta = 0.01;
     noStroke();
     fill(m_color);
-    for (float x = -400; x < width; x += delta) {
+    for (float x = (0-ax.xPos)/ax.xScalar; x < width; x += delta) {
       circle(ax.xPos(x), ax.yPos(compute(x)), 2.0);
     }
   }
-  void LfDraw(Axes ax) {
-    float delta = 0.01;
+  void fLDraw(Axes ax) {
+    float delta = 0.5;
     stroke(m_color);
-    for (float x = -400; x < width; x += delta) {
+    for (float x = (0-ax.xPos)/ax.xScalar; x < width; x += delta) {
       line(ax.xPos(x), ax.yPos(compute(x)), ax.xPos(x-delta), ax.yPos(compute(x-delta)));
     }
   }

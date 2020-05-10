@@ -19,8 +19,8 @@ class SegFunc {
     
   }
   void LfDraw(Axes ax) {}
-  float intDX(float a, float b, float dx) {}
-  float simp(float a, float b, int simpCount) {}
+  //float intDX(float a, float b, float dx) {}
+  //float simp(float a, float b, int simpCount) {}
   
 }
   

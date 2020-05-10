@@ -13,11 +13,14 @@ class Axes {
 
 
   Axes() {
+    update();
+  }
+  void update(){
     xScalar = width/xMarks;
     yScalar = height/yMarks;
   }
-
   void render() {
+    update();
     //yAxis
     for (float y = yPos; y < height; y += yScalar) {
       stroke(chLineColor);

@@ -31,17 +31,7 @@ class Function {
     assignColor();
   }
 
-
-  private void assignColor() {
-    if (fCount +1 > fColors.length) {
-      m_color = #ffffff;
-    } else {
-      fCount++;
-      m_color = fColors[fCount-1];
-    }
-  }
-
-  float compute(float x) {
+  float compute(float x) { // computes f(x) given x
     float result = 0;
     if (!extended) {
       for (int i = 0; i < m_polys.length; i++) {
@@ -54,15 +44,16 @@ class Function {
     return result;
   }
 
-  void fDraw(Axes ax) {
+  void fDraw(Axes ax) { //with dots draws entire function on entire window
     float delta = 0.01;
     noStroke();
     fill(m_color);
-    for (float x = (0-ax.xPos)/ax.xScalar; x < width; x += delta) {
+    for (float x = (0-ax.xPos)/ax.xScalar; x < width; x += delta) { //for-loop from position that is the leftmost position to the rightmost position .
       circle(ax.xPos(x), ax.yPos(compute(x)), 2.0);
     }
   }
-  void fLDraw(Axes ax) {
+  
+  void fLDraw(Axes ax) {//with lines draws entire function on entire window
     float delta = 0.5;
     stroke(m_color);
     for (float x = (0-ax.xPos)/ax.xScalar; x < width; x += delta) {
@@ -70,7 +61,7 @@ class Function {
     }
   }
 
-  void fLDraw(float a, float b, Axes ax) {
+  void fLDraw(float a, float b, Axes ax) { //with lines draws function from a to b
     float delta = 0.5;
     stroke(m_color);
     for (float x = a; x < b; x += delta) {
@@ -78,7 +69,7 @@ class Function {
     }
   }
 
-  float intDX(float a, float b, float dx) {
+  float intDX(float a, float b, float dx) { //numerically integrates function from a to b with dx as hopping distance
     if (a>b) {
       println("you gei");
       return 0;
@@ -90,7 +81,7 @@ class Function {
     return sum;
   }
 
-  float simp(float a, float b, int simpCount) {
+  float simp(float a, float b, int simpCount) { //simpsons integration method
     if (a>b || a == 0  ) {
       println("your gei");
       return 0;
@@ -101,5 +92,14 @@ class Function {
       sum += (3 * log(compute(i*hopLen))-1 + 4 * (3 * log(compute(i*hopLen + hopLen * (3.0/1.0)))-1 ) + (3 * log(compute(i*hopLen + hopLen * (3.0/2.0)) )-1));
     } 
     return sum/6;
+  }
+  
+  private void assignColor() { // function that assigns color based on count of "functions"
+    if (fCount +1 > fColors.length) {
+      m_color = #ffffff;
+    } else {
+      fCount++;
+      m_color = fColors[fCount-1];
+    }
   }
 }

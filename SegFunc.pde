@@ -16,21 +16,19 @@ class SegFunc {
   }
 
   void fDraw(Axes ax) {}
-  void fLDraw(float a, float b, Axes ax) {
+  
+  void fLDraw(Axes ax) {
+    println("seg");
     int idx = 0;
     for (; idx < limits.size()-1; idx = idx + 2) {
-      if (limits.get(idx) <= a) {
-        break;
-      }
       println(idx, limits.size()-2);
       if (idx == limits.size()-2) {
-        println("a is over max lower limit");
         //return 0;
       }
     }
     for (; idx < limits.size(); idx +=2) {
-      if (limits.get(idx+1) < b ) {
-        //result += funcs.get(idx/2).intDX(limits.get(idx), limits.get(idx+1), dx );
+      if ((limits.get(idx+1)-ax.xPos)/ax.xScalar   < (width-ax.xPos)/ax.xScalar ) {
+        funcs.get(idx/2).fLDraw(limits.get(idx), limits.get(idx+1),ax);
         
       } else {
         println("upperlimit too high");

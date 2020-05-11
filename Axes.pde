@@ -15,7 +15,7 @@ class Axes {
   Axes() {
     update();
   }
-  void update(){
+  void update() {
     xScalar = width/xMarks;
     yScalar = height/yMarks;
   }
@@ -28,8 +28,9 @@ class Axes {
       stroke(coorColor);
       line(xPos - 5, y, xPos, y);
       fill(textColor);
-      if (enableTxt) {text(int((yPos-y)/yScalar), xPos-20, y+yScalar/2 -3);}
-      
+      if (enableTxt) {
+        text(int((yPos-y)/yScalar), xPos-20, y+yScalar/2 -3);
+      }
     }
 
     for (float y = yPos; y > 0; y -= yScalar) {
@@ -38,9 +39,9 @@ class Axes {
       stroke(coorColor);
       line(xPos - 5, y, xPos, y);
       fill(textColor);
-      if (enableTxt) {text(int((yPos-y)/yScalar), xPos-20, y+yScalar/2 -5);}
-      
-      
+      if (enableTxt) {
+        text(int((yPos-y)/yScalar), xPos-20, y+yScalar/2 -5);
+      }
     }
 
     //xAxis
@@ -50,7 +51,9 @@ class Axes {
       stroke(coorColor);
       line(x, yPos - 5, x, yPos);
       fill(textColor);
-      if (enableTxt) {text(-int((xPos-x)/xScalar), x-xScalar/2 -3, yPos-10);}
+      if (enableTxt) {
+        text(-int((xPos-x)/xScalar), x-xScalar/2 -3, yPos-10);
+      }
     }
 
     for (float x = xPos; x > 0; x -= xScalar) {
@@ -59,7 +62,9 @@ class Axes {
       stroke(coorColor);
       line(x, yPos - 5, x, yPos);
       fill(textColor);
-      if (enableTxt) {text(-int((xPos-x)/xScalar), x-xScalar/2 -3, yPos-10);}
+      if (enableTxt) {
+        text(-int((xPos-x)/xScalar), x-xScalar/2 -3, yPos-10);
+      }
     }
 
     stroke(255);
@@ -73,8 +78,8 @@ class Axes {
   float yPos(float yIn) {
     return (this.yPos - yIn * yScalar)  ;
   }
-  
-  void point(float x, float y){
+
+  void point(float x, float y) {
     circle(xPos(x), yPos(y), 2.5);
   }
 }

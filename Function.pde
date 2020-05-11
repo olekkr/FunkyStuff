@@ -11,7 +11,7 @@ class Function {
     m_polys = new float[polyList.length];
     for (int i = 0; i < polyList.length; i++) {
       this.m_polys[i] = polyList[i];
-      printArray(m_polys);
+      //printArray(m_polys);
     }
     assignColor();
   }
@@ -51,9 +51,6 @@ class Function {
         result += pow(x, i) * m_polys[i];
       }
     }
-
-
-
     return result;
   }
 
@@ -69,6 +66,14 @@ class Function {
     float delta = 0.5;
     stroke(m_color);
     for (float x = (0-ax.xPos)/ax.xScalar; x < width; x += delta) {
+      line(ax.xPos(x), ax.yPos(compute(x)), ax.xPos(x-delta), ax.yPos(compute(x-delta)));
+    }
+  }
+
+  void fLDraw(float a, float b, Axes ax) {
+    float delta = 0.5;
+    stroke(m_color);
+    for (float x = a; x < b; x += delta) {
       line(ax.xPos(x), ax.yPos(compute(x)), ax.xPos(x-delta), ax.yPos(compute(x-delta)));
     }
   }

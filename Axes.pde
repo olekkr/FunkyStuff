@@ -8,8 +8,9 @@ class Axes {
   float xScalar;
   float yScalar;
   color chLineColor = #696969;
-  boolean enableTxt = true;
+  boolean enableTxt = false;
   color textColor = #ffffff;
+  boolean anoyingL = false;
 
 
   Axes() {
@@ -24,7 +25,8 @@ class Axes {
     //yAxis
     for (float y = yPos; y < height; y += yScalar) {
       stroke(chLineColor);
-      line(0, y, width, y);
+      if(anoyingL){line(0, y, width, y);}
+      
       stroke(coorColor);
       line(xPos - 5, y, xPos, y);
       fill(textColor);
@@ -35,7 +37,7 @@ class Axes {
 
     for (float y = yPos; y > 0; y -= yScalar) {
       stroke(chLineColor);
-      line(0, y, width, y);
+      if(anoyingL){line(0, y, width, y);}
       stroke(coorColor);
       line(xPos - 5, y, xPos, y);
       fill(textColor);
@@ -47,7 +49,7 @@ class Axes {
     //xAxis
     for (float x = xPos; x < width; x += xScalar) {
       stroke(chLineColor);
-      line(x, 0, x, height);
+      if(anoyingL){line(x, 0, x, height);}
       stroke(coorColor);
       line(x, yPos - 5, x, yPos);
       fill(textColor);
@@ -58,7 +60,7 @@ class Axes {
 
     for (float x = xPos; x > 0; x -= xScalar) {
       stroke(chLineColor);
-      line(x, 0, x, height);
+      if(anoyingL){line(x, 0, x, height);}
       stroke(coorColor);
       line(x, yPos - 5, x, yPos);
       fill(textColor);

@@ -9,44 +9,42 @@ SegFunc segFunc = new SegFunc();
 color backgroundColor = #000000;
 boolean showPureFunc = false;
 
-void setup() {
+void setup() { 
   size(800, 800);
-  background(0);
   noStroke();
   ax = new Axes();
 
-  functions.add(new Function(2, -1, 1.0/10)); // 2 - 0*x + 1/8x^2
+  functions.add(new Function(2, -1, 0.1)); // 2 - 0*x + 1/8x^2
   functions.add(new Function(2, -2, 1));
-  functions.get(0).fLDraw(0, 100, ax);
+  functions.add(new Function(20, 0.0001, 0));
 
-  segFunc.addFunc(functions.get(0), 0, 100);
+  segFunc.addFunc(functions.get(0), 0, 10);
+  segFunc.addFunc(functions.get(1), 10, 20);
+  segFunc.addFunc(functions.get(2), 20, 30);
+  
+  println("wut: ", functions.get(0).simp(0, 10));
+  
   segFuncs.add(segFunc);
-  println("ayy: ", segFunc.intDX(0.0, 2.0, 0.001));
-  for (Function f : functions) {
-    //println("intdx: ", f.intDX(0, 5, 1.0/1000));
-    //println("simp:  ", f.simp(0.01, 5, 3));
-  }
+  println(segFunc.simp(0.0, 30.0));
 
-  //update();
+
+  update();
 }
 
 
 void update() {
   background(backgroundColor);
-  if (showPureFunc) {
-    for (Function f : functions) {
-
-      f.fLDraw(ax);
-    }
-  }
-  else{
-    for (SegFunc f : segFuncs) {
-
-      f.fLDraw(ax);
-    }
-  }
 
   ax.render();
+  if (showPureFunc) {
+    for (Function f : functions) {
+      f.fLDraw(ax);
+    }
+  } else {
+    for (SegFunc f : segFuncs) {
+      f.fLDraw(ax);
+    }
+  }
 }
 
 
@@ -68,16 +66,16 @@ void keyPressed() {
   }
 
   if (key == 'w' ) {
-    ax.yMarks *= 2;
+    ax.yMarks *= 1.2;
   }
-  if (key == 's' && ax.yMarks * 1/2 != 0) {
-    ax.yMarks *= 1/2.0;
+  if (key == 's' && ax.yMarks * 1/1.1 != 0) {
+    ax.yMarks *= 1/1.1;
   }
   if (key == 'd' ) {
-    ax.xMarks *= 2;
+    ax.xMarks *= 1.2;
   }
-  if (key == 'a' && ax.xMarks * 1/2 != 0) {
-    ax.xMarks *= 1/2.0;
+  if (key == 'a' && ax.xMarks * 1/1.2 != 0) {
+    ax.xMarks *= 1/1.2;
   }
 
   update();

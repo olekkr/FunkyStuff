@@ -11,54 +11,50 @@ class SegFunc {
     this.funcs.add(func);
     this.limits.append(a);
     this.limits.append(b);
-
     return 0;
   }
 
-  void fDraw(Axes ax) {}
-  
   void fLDraw(Axes ax) {
-    println("seg");
-    int idx = 0;
-    for (; idx < limits.size()-1; idx = idx + 2) {
-      println(idx, limits.size()-2);
-      if (idx == limits.size()-2) {
-        //return 0;
-      }
-    }
-    for (; idx < limits.size(); idx +=2) {
-      if ((limits.get(idx+1)-ax.xPos)/ax.xScalar   < (width-ax.xPos)/ax.xScalar ) {
-        funcs.get(idx/2).fLDraw(limits.get(idx), limits.get(idx+1),ax);
-        
-      } else {
-        println("upperlimit too high");
-        //result += funcs.get(idx/2).intDX(limits.get(idx), b, dx );
-        //return result;
-      }
-    }
     
-  }
-  float intDX(float a, float b, float dx) {
-    int idx = 0;
-    float result = 0.0;
-    for (; idx < limits.size()-1; idx += 2) {
-      if (limits.get(idx) <= a) {
-        break;
-      }
-      println(idx, limits.size()-2);
-      if (idx == limits.size()-2) {
-        return 0;
-      }
+    
+    for(int i = 0; i < functions.size(); i ++){
+      funcs.get(i).fLDraw(limits.get(2*i), limits.get(2*i+1), ax);
+      //println("reeeee");
     }
-    for (; idx < limits.size(); idx +=2) {
-      if (limits.get(idx+1) < b ) {
-        result += funcs.get(idx/2).intDX(limits.get(idx), limits.get(idx+1), dx );
-        println("upperlimit too high");
-        
-      } else {
-        println("normal");
-        result += funcs.get(idx/2).intDX(limits.get(idx), b, dx );
+  }
+  
+  float intDX(float a, float b, float dx) {
+    float result = 0.0;
+    
+    for(int i = 0; i < funcs.size(); i++){
+      float left = limits.get(i*2);
+      float right = limits.get(i*2+1);
+      if (left < a){
+        left = a;
       }
+      if( right > b){
+        right = b;
+      }
+      //println(i, left, right);
+      result += funcs.get(i).intDX(left, right, 0.001);
+    }
+    return result;
+  }
+  
+  
+  float simp(float a, float b) {
+    float result = 0.0;
+    for(int i = 0; i < funcs.size(); i++){
+      float left = limits.get(i*2);
+      float right = limits.get(i*2+1);
+      if (left < a){
+        left = a;
+      }
+      if( right > b){
+        right = b;
+      }
+      println("simp: ", left, right);
+      result += funcs.get(i).simp(left, right);
     }
     return result;
   }

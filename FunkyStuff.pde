@@ -7,40 +7,23 @@ double realValue = 250;
 
 Axes ax;
 SegFunc segFunc = new SegFunc();
-color backgroundColor = #000000;
+color backgroundColor = #ffffff;
 boolean showPureFunc = false;
 
 void setup() { 
   size(800, 800);
   noStroke();
   ax = new Axes();
-  
+
 
   functions.add(new Function(5, -1, 0.066666666666666));
   functions.add(new Function(-55, 5, -0.083333333333333));
   segFunc.addFunc(functions.get(0), 0, 20);
   segFunc.addFunc(functions.get(1), 20, 30);
   segFuncs.add(segFunc);
-  
-  println(segFuncs.get(0).trapez(0,30,0.295431098477499));
 
-  //println("trapez\t dx\t int\t time");
-  //for (double dx = 3; dx > 1/100000.0; dx *= 0.9) {
-  //  int start = millis();
-  //  for (int i = 0; i < 1000; i ++){
-  //    segFuncs.get(0).trapez(0.0, 30.0, dx);
-  //  }
-  //  println("\t", dx, "\t",segFuncs.get(0).trapez(0.0, 30, dx), "\t",  millis() - start);
-  //}
-  //println("intdx\t dx\t int\t time");
-  //for (double dx = 3; dx > 1/100000.0; dx *= 0.9) {
-  //  int start = millis();
-  //  for (int i = 0; i < 1000; i ++){
-  //    segFuncs.get(0).intDX(0.0, 30.0, dx);
-  //  }
-  //  println("\t", dx, "\t",segFuncs.get(0).intDX(0.0, 30.0, dx), "\t",  millis() - start);
-  //}
-  //println("done");
+
+  update();
 }
 
 
@@ -59,23 +42,23 @@ void update() {
   }
 }
 
-double dpow(double x, int count){
+double dpow(double x, int count) {
   double acc = 1;
-  for (int i = 0; i < count; i++){
+  for (int i = 0; i < count; i++) {
     acc *= x;
   }
   return acc;
 }
 
-double abs(double d){
-  if(d<0){
+double abs(double d) {
+  if (d<0) {
     return -d;
   }
   return d;
-  
 }
 
 void keyPressed() {
+  println(key, keyCode);
   if (key == 'f') {
     save("img" + str(int(random(1000))) + ".png");
   }
@@ -104,7 +87,25 @@ void keyPressed() {
   if (key == 'a' ) {
     ax.xMarks *= 1/1.05;
   }
-
+  if (key == '1') {
+    println("trapez\t dx\t int\t time");
+    for (double dx = 3; dx > 1/100000.0; dx *= 0.9) {
+      int start = millis();
+      for (int i = 0; i < 1000; i ++) {
+        segFuncs.get(0).trapez(0.0, 30.0, dx);
+      }
+      println("\t", dx, "\t", segFuncs.get(0).trapez(0.0, 30, dx), "\t", millis() - start);
+    }
+    println("intdx\t dx\t int\t time");
+    for (double dx = 3; dx > 1/100000.0; dx *= 0.9) {
+      int start = millis();
+      for (int i = 0; i < 1000; i ++) {
+        segFuncs.get(0).intDX(0.0, 30.0, dx);
+      }
+      println("\t", dx, "\t", segFuncs.get(0).intDX(0.0, 30.0, dx), "\t", millis() - start);
+    }
+    println("done");
+  }
   update();
 }
 

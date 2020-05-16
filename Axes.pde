@@ -4,12 +4,12 @@ class Axes {
   int d = 50;
   int xMarks = 50;
   int yMarks = 50;
-  color coorColor = #ffffff;
+  color coorColor = #000000;
   float xScalar;
   float yScalar;
-  color chLineColor = #696969;
+  color chLineColor = #000000;
   boolean enableTxt = true;
-  color textColor = #ffffff;
+  color textColor = #000000;
   boolean anoyingL = true;
 
 
@@ -26,7 +26,6 @@ class Axes {
     for (float y = yPos; y < height; y += yScalar) {
       stroke(chLineColor);
       if(anoyingL){line(0, y, width, y);}
-      
       stroke(coorColor);
       line(xPos - 5, y, xPos, y);
       fill(textColor);
@@ -69,7 +68,7 @@ class Axes {
       }
     }
 
-    stroke(255);
+    stroke(0);
     line(xPos, 0, xPos, height); // horizontal line
     line(0, yPos, width, yPos); // vertical line
   }

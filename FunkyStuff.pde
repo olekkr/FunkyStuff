@@ -89,23 +89,23 @@ void keyPressed() {
   }
   if (key == '1') {
     println("trapez\tdx\tint\ttime\tcount");
-    for (double dx = 3; dx > 1/100000.0; dx *= 0.9) {
+    for (double dx = 2; dx > 1/dpow(2, 26); dx *= 0.5) {
       int start = millis();
       int i = 0;
-      for (; millis() - start < 1000; i++) {
+      for (; millis() - start < 500; i++) {
         segFuncs.get(0).trapez(0.0, 30.0, dx);
       }
       println("\t", dx, "\t", segFuncs.get(0).trapez(0.0, 30, dx), "\t", millis() - start, "\t", i);
     }
     
     println("\nintdx\tdx\tint\ttime\tcoun");
-    for (double dx = 3; dx > 1/100000000.0; dx *= 0.9) {
+    for (double dx = 2; dx > 1/dpow(2, 26); dx *= 0.5) {
       int i = 0;
       int start = millis();
-      for (; millis() - start < 1000; i++) {
+      for (; millis() - start < 500; i++) {
         segFuncs.get(0).intDX(0.0, 30.0, dx);
       }
-      println("\t", dx, "\t", segFuncs.get(0).intDX(0.0, 30.0, dx), "\t", millis() - start, i);
+      println("\t", dx, "\t", segFuncs.get(0).intDX(0.0, 30.0, dx), "\t", millis() - start, "\t", i);
     }
     println("done");
   }

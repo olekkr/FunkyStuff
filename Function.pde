@@ -47,7 +47,7 @@ class Function {
     float delta = 0.5;
     stroke(m_color);
     for (float x = (0-ax.xPos)/ax.xScalar; x < (width-ax.xPos)/ax.xScalar; x += delta) {
-      line(ax.xPos(x), ax.yPos(compute(x)), ax.xPos(x-delta), ax.yPos(compute(x+delta)));
+      line(ax.xPos(x), ax.yPos(compute(x)), ax.xPos(x+delta), ax.yPos(compute(x+delta)));
     }
   }
 

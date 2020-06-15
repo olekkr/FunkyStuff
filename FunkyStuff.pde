@@ -8,7 +8,7 @@ double realValue = 250;
 Axes ax;
 SegFunc segFunc = new SegFunc();
 color backgroundColor = #ffffff;
-boolean showPureFunc = false;
+boolean showPureFunc = true;
 
 void setup() { 
   size(800, 800);

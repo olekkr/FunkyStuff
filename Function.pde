@@ -75,11 +75,11 @@ class Function {
 
   double trapez(double a, double b, double dx) {
     double result = 0;
-    double lastn = compute(a);
+    //double lastn = compute(a);
     for (double x = a +dx ; x < b; x += dx) {
-      double newn = compute(x);
+      //double newn = compute(x);
       result += compute(x)*dx + abs(compute(x)-compute(x+dx))*dx/2;
-      lastn = newn;
+      //lastn = newn;
     }
     return result;
   }

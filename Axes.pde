@@ -8,9 +8,9 @@ class Axes {
   float xScalar;
   float yScalar;
   color chLineColor = #000000;
-  boolean enableTxt = true;
+  boolean enableTxt = false;
   color textColor = #000000;
-  boolean anoyingL = true;
+  boolean anoyingL = false;
 
 
   Axes() {
